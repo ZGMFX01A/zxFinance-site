@@ -5,39 +5,39 @@
       <ul class="clearfix mt20 new-list">
         <li class="clearfix list-item">
           <NuxtLink to="/about/detail">9月14日最新理财产品预告</NuxtLink>
-          <span>2020-09-12</span>
+          <span>2021-09-12</span>
         </li>
         <li class="clearfix list-item">
           <NuxtLink to="/about/detail">豆兑换规则</NuxtLink>
-          <span>2020-09-12</span>
+          <span>2021-09-12</span>
         </li>
         <li class="clearfix list-item">
           <NuxtLink to="/about/detail">9月12日最新理财产品介绍</NuxtLink>
-          <span>2020-09-12</span>
+          <span>2021-09-12</span>
         </li>
         <li class="clearfix list-item">
           <NuxtLink to="/about/detail">9月11日最新理财产品介绍</NuxtLink>
-          <span>2020-09-11</span>
+          <span>2021-09-11</span>
         </li>
         <li class="clearfix list-item">
           <NuxtLink to="/about/detail">9月10日最新理财产品预告</NuxtLink>
-          <span>2020-09-09</span>
+          <span>2021-09-09</span>
         </li>
         <li class="clearfix list-item">
           <NuxtLink to="/about/detail">9月9日最新理财产品介绍</NuxtLink>
-          <span>2020-09-09</span>
+          <span>2021-09-09</span>
         </li>
         <li class="clearfix list-item">
           <NuxtLink to="/about/detail">9月8日最新理财产品预告</NuxtLink>
-          <span>2020-09-07</span>
+          <span>2021-09-07</span>
         </li>
         <li class="clearfix list-item">
           <NuxtLink to="/about/detail">9月7日最新理财产品预告</NuxtLink>
-          <span>2020-09-06</span>
+          <span>2021-09-06</span>
         </li>
         <li class="clearfix list-item">
           <NuxtLink to="/about/detail">9月6日最新理财产品预告</NuxtLink>
-          <span>2020-09-05</span>
+          <span>2021-09-05</span>
         </li>
       </ul>
       <div class="page">

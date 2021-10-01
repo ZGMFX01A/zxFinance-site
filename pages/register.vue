@@ -15,7 +15,7 @@
             <input v-model="userInfo.userType" type="radio" value="1" />
             我要投资
             <input v-model="userInfo.userType" type="radio" value="2" />
-            我要借钱
+            我要贷钱
           </li>
           <li class="telNumber">
             <span class="dis">手机号码</span>
@@ -46,7 +46,7 @@
 
           <li class="agree">
             <input type="checkbox" checked />
-            我同意《<NuxtLink to="#" target="_black">尚融宝注册协议</NuxtLink>》
+            我同意《<NuxtLink to="#" target="_black">众享金融注册协议</NuxtLink>》
             <span>请查看协议</span>
           </li>
           <li class="btn">

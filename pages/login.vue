@@ -10,7 +10,7 @@
             <input v-model="userInfo.userType" type="radio" value="1" />
             投资人
             <input v-model="userInfo.userType" type="radio" value="2" />
-            借款人
+            贷款人
           </li>
           <li>
             <span class="dis">手机号：</span>

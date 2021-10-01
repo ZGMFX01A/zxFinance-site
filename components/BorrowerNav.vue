@@ -15,7 +15,7 @@
     <li :class="{ 'pleft-cur': $route.fullPath === '/user/invest' }">
       <span>
         <NuxtLink style="text-align:center;width:115px;" to="/user/invest">
-          借款记录
+          贷款记录
         </NuxtLink>
       </span>
     </li>
