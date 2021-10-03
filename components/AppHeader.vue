@@ -119,10 +119,34 @@ export default {
 
   methods: {
     //显示用户信息
-    showInfo() {},
+    showInfo() {
+      //判断cookie中是否有用户信息
+      let userInfo=cookie.get('userInfo')
+      if(!userInfo){
+        console.log('cookie不存在')
+        this.userInfo=null
+        return
+      }
+      userInfo=JSON.parse(userInfo)
+      this.userInfo=userInfo
+
+      //首先校验token是否合法
+      this.$axios({
+        url:'/api/core/userInfo/checkToken',
+        methods:'get',
+       
+      }).then((response)=>{
+        console.log('校验成功')
+        this.userInfo=userInfo
+      })
+
+    },
 
     //退出
-    logout() {},
+    logout() {
+      cookie.set('userInfo','')
+      window.location.href='/login'
+    },
   },
 }
 </script>
