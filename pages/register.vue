@@ -15,7 +15,7 @@
             <input v-model="userInfo.userType" type="radio" value="1" />
             我要投资
             <input v-model="userInfo.userType" type="radio" value="2" />
-            我要贷钱
+            我要贷款
           </li>
           <li class="telNumber">
             <span class="dis">手机号码</span>
@@ -46,7 +46,7 @@
 
           <li class="agree">
             <input type="checkbox" checked />
-            我同意《<NuxtLink to="#" target="_black">众享金融注册协议</NuxtLink>》
+            我同意《<NuxtLink to="#" target="_black">尚融宝注册协议</NuxtLink>》
             <span>请查看协议</span>
           </li>
           <li class="btn">
@@ -88,20 +88,57 @@ export default {
         userType: 1,
       },
       sending: false, // 是否发送验证码
-      second: 10, // 倒计时间
+      second: 60, // 倒计时间
       leftSecond: 0, //剩余时间
     }
   },
 
   methods: {
     //发短信
-    send() {},
+    send() {
+      if (!this.userInfo.mobile) {
+        this.$message.error('请输入手机号码')
+        return
+      }
+
+      //防止重复提交，显示倒计时
+      if (this.sending) return
+      this.sending = true
+
+      //倒计时
+      this.timeDown()
+
+      this.$axios
+        .$get('/api/sms/send/' + this.userInfo.mobile)
+        .then((response) => {
+          this.$message.success(response.message)
+        })
+    },
 
     //倒计时
-    timeDown() {},
+    timeDown() {
+      console.log('倒计时')
+      this.leftSecond = this.second
+
+      const timmer = setInterval(() => {
+        // console.log(new Date())
+        this.leftSecond--
+        if (this.leftSecond <= 0) {
+          //停止计时
+          clearInterval(timmer)
+          this.sending = false
+        }
+      }, 1000)
+    },
 
     //注册
-    register() {},
+    register() {
+      this.$axios
+        .$post('/api/core/userInfo/register', this.userInfo)
+        .then((response) => {
+          this.step = 2
+        })
+    },
   },
 }
 </script>
