@@ -1,5 +1,5 @@
 {
-  "name": "srb-site",
+  "name": "zxFinance-site",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
