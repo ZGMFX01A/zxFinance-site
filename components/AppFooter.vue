@@ -93,7 +93,7 @@
       <div class="ft-identity">
         ©2021 众享金融 All rights reserved&nbsp;&nbsp;&nbsp;
         <span class="color-e6">|</span>&nbsp;&nbsp;&nbsp;
-        北京市众享金融投资管理有限公司&nbsp;&nbsp;&nbsp;
+        天津市众享金融投资管理有限公司&nbsp;&nbsp;&nbsp;
         <span class="color-e6">|</span>&nbsp;&nbsp;&nbsp;
         <a target="_blank" href="http://www.miitbeian.gov.cn/">
           京ICP备12345678号-1
