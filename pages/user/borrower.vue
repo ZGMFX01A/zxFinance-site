@@ -200,6 +200,11 @@
           </el-alert>
         </div>
       </div>
+      <NuxtLink to="/user/apply" v-if="borrowerStatus === 2">
+  <el-button style="margin-top:20px;" type="success">
+    我要贷款
+  </el-button>
+</NuxtLink>
     </div>
   </div>
 </template>
@@ -211,7 +216,7 @@ export default {
       active: null, //步骤
       borrowerStatus: null,
       submitBtnDisabled: false,
-      //借款人信息
+      //贷款人信息
       borrower: {
         borrowerAttachList: [],
       },
