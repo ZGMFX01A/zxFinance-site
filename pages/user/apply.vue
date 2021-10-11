@@ -72,7 +72,7 @@
           </el-form-item>
         </el-form>
         <el-alert
-          title="您提供的任何信息众享金融都承诺予以保护，不会挪作他用。"
+          title="您提供的任何信息尚融宝都承诺予以保护，不会挪作他用。"
           type="warning"
           :closable="false"
         >
@@ -121,7 +121,7 @@
 export default {
   data() {
     return {
-      active: 0, //步骤
+      active: null, //步骤
       borrowInfoStatus: null, //审批状态
       //贷款申请
       borrowInfo: {
@@ -133,11 +133,12 @@ export default {
       moneyUseList: [], //资金用途列表
     }
   },
-    watch: {
+
+  watch: {
     'borrowInfo.amount'(value) {
       if (value > this.borrowAmount) {
         let _this = this
-        this.$alert('您的借款额度不足！', {
+        this.$alert('您的贷款额度不足', {
           type: 'error',
           callback() {
             _this.borrowInfo.amount = _this.borrowAmount
@@ -146,13 +147,40 @@ export default {
       }
     },
   },
-  mounted(){
-    //获取贷款额度
-    this.getBorrowAmount()
-    this.initSelected()
+
+  created() {
+    this.getBorrowInfoStatus()
   },
-  methods:{
-     //初始化下拉列表的数据
+
+  methods: {
+    getBorrowInfoStatus() {
+      this.$axios
+        .$get('/api/core/borrowInfo/auth/getBorrowInfoStatus')
+        .then((response) => {
+          this.borrowInfoStatus = response.data.borrowInfoStatus
+          if (this.borrowInfoStatus === 0) {
+            //未认证
+            this.active = 0
+
+            //获取贷款额度
+            this.getBorrowAmount()
+
+            //初始化下拉列表
+            this.initSelected()
+          } else if (this.borrowInfoStatus === 1) {
+            //审批中
+            this.active = 1
+          } else if (this.borrowInfoStatus === 2) {
+            //审批成功
+            this.active = 2
+          } else if (this.borrowInfoStatus === -1) {
+            //审批失败
+            this.active = 2
+          }
+        })
+    },
+
+    //初始化下拉列表的数据
     initSelected() {
       //还款方式列表
       this.$axios
@@ -168,16 +196,23 @@ export default {
           this.moneyUseList = response.data.dictList
         })
     },
-    getBorrowAmount(){
-      this.$axios.$get('/api/core/borrowInfo/auth/getBorrowAmount').then(response=>{
-        this.borrowAmount=response.data.borrowAmount
-      })
+
+    getBorrowAmount() {
+      this.$axios
+        .$get('/api/core/borrowInfo/auth/getBorrowAmount')
+        .then((response) => {
+          this.borrowAmount = response.data.borrowAmount
+        })
     },
-    save(){
-      this.$axios.$post('/api/core/borrowInfo/auth/save',this.borrowInfo).then(response=>{
-      this.active=1
-      })
-    }
-  }
+
+    //提交贷款申请
+    save() {
+      this.$axios
+        .$post('/api/core/borrowInfo/auth/save', this.borrowInfo)
+        .then((response) => {
+          this.active = 1
+        })
+    },
+  },
 }
 </script>
